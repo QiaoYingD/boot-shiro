@@ -23,9 +23,13 @@ public class MyShiroRealm extends AuthorizingRealm {
 
     static {
         map.put("admin", new UserModel("admin", "e10adc3949ba59abbe56e057f20f883e"));
+        map.put("lisi", new UserModel("lisi", "e10adc3949ba59abbe56e057f20f883e"));
         List<String> roleList = new ArrayList<>();
         roleList.add("admin");
+        List<String> roleList1 = new ArrayList<>();
+        roleList.add("a");
         roleMap.put("admin", roleList);
+        roleMap.put("lisi",roleList1);
     }
 
     /**
