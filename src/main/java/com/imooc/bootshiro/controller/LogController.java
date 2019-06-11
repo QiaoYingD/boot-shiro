@@ -38,13 +38,8 @@ public class LogController {
             return "用户名或密码错误次数大于5次,账户已锁定，2分钟后可再次登录或联系管理员解锁";
 
         } catch (IncorrectCredentialsException ice) {
-            // 获取输错次数
             log.error("用户登录，用户验证未通过：错误的凭证，密码输入错误！user=" + userName);
             return "用户登录，用户验证未通过：错误的凭证，密码输入错误！user=" + userName;
-        } catch (ExcessiveAttemptsException e) {
-            log.error(
-                    "用户登录，用户验证未通过：错误次数大于5次,账户已锁定！user=.getMobile()" + userName, e);
-            return "这里结合了，另一种密码输错限制的实现，基于redis或mysql的实现；也可以直接使用RetryLimitHashedCredentialsMatcher限制5次";
         } catch (AuthenticationException e) {
             log.error("用户登录，用户验证未通过：认证异常，异常信息如下！user=" + userName,e);
             return "用户名或密码不正确";
