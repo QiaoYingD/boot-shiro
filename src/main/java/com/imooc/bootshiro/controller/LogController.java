@@ -6,10 +6,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.ExcessiveAttemptsException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import static com.imooc.bootshiro.realm.MyShiroRealm.userMap;
 
 @Slf4j
@@ -21,6 +24,7 @@ public class LogController {
     public static String login(String userName, String password) {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
+        boolean flag = false;
         try {
             subject.login(token);
             if (!subject.isAuthenticated()) {
@@ -40,8 +44,6 @@ public class LogController {
             log.error("用户登录，用户验证未通过：操作异常，异常信息如下！user=" + userName, e);
             return "用户登录失败，请您稍后再试";
         }
-        return "登陆成功";
-    }
 
     /**
      * 注册账号
@@ -68,6 +70,8 @@ public class LogController {
     }
 
 
+        return "登陆成功";
+    }
 
 
 }
