@@ -24,7 +24,7 @@ public class ShiroConfig {
 
     public static final String HASH_ALGORITHM = "md5";
 
-    public static final Integer HASH_ITERATIONS = 1;
+    public static final Integer HASH_ITERATIONS = 2;
 
 
     /**

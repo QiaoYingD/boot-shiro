@@ -1,3 +1,4 @@
+
 package com.imooc.bootshiro.realm;
 
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -29,7 +30,6 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
      * @param info
      * @return
      */
-
     @Override
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
         //获取用户名登录
@@ -55,7 +55,5 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
         }
         return matches;
     }
-
-
 
 }
