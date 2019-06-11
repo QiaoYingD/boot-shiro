@@ -24,7 +24,7 @@ public class ShiroConfig {
 
     public static final String HASH_ALGORITHM = "md5";
 
-    public static final Integer HASH_ITERATIONS = 1;
+    public static final Integer HASH_ITERATIONS = 2;
 
 
     /**
@@ -40,6 +40,11 @@ public class ShiroConfig {
         log.debug("-----------------Shiro拦截器工厂类注入开始");
         // 配置shiro安全管理器 SecurityManager
         shiroFilterFactoryBean.setSecurityManager(securityManager);
+        // 未授权时跳转的界面;
+        shiroFilterFactoryBean.setUnauthorizedUrl("/tips/unauthorized");
+
+
+
         // filterChainDefinitions拦截器=map必须用：LinkedHashMap，因为它必须保证有序
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         // 配置退出过滤器,具体的退出代码Shiro已经实现
